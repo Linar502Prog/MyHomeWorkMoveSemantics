@@ -7,7 +7,7 @@ public:
 	big_integer(const std::string& number) {
 		m_number = number;
 	}
-	big_integer(big_integer&& other) {
+	big_integer(big_integer&& other) noexcept {
 		m_number = std::move(other.m_number);
 	}
 	big_integer operator+(const big_integer& other) {
@@ -57,7 +57,7 @@ public:
 		return big_integer(plus_res);
 	}
 	friend std::ostream& operator<<(std::ostream& os, const big_integer& other);
-	big_integer& operator=(big_integer&& other) {
+	big_integer& operator=(big_integer&& other) noexcept {
 		m_number = std::move(other.m_number);
 		return *this;
 	}
